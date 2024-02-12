@@ -1,1 +1,5 @@
-export default {};
+export default {
+  COLOR: {
+    PRIMARY: "#5598fd"
+  }
+};

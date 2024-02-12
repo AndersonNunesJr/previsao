@@ -1,9 +1,9 @@
 import { Container } from "./styles";
 
-export function Input() {
+export function Input({ ...rest }) {
   return (
     <Container>
-      <div>5555</div>
+      <input {...rest} />
     </Container>
   );
 }

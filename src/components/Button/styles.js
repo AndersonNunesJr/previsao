@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  width: 100%;
-  height: 56px;
   border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
 
   border-radius: 10px;
   font-size: 16px;
+  cursor: pointer;
 `;

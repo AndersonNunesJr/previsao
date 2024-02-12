@@ -1,9 +1,35 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100%;
-  padding: 0 25px;
-  background-color: #bb00ff;
-  width: fit-content;
-  border-radius: 10px;
+  .cards .card {
+    display: flex;
+    width: 80px;
+    height: 130px;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 10px 0;
+    border-radius: 20px;
+
+    text-align: center;
+
+    color: #1a1a1a;
+    background-color: #fff;
+  }
+
+  .card h2 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .card .card-icon {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .card .day-temp {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;

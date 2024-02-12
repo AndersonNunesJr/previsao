@@ -1,5 +1,5 @@
 import { Container } from "./styles";
 
-export function Header({ children, ...rest }) {
+export function Section({ children, ...rest }) {
   return <Container {...rest}>{children}</Container>;
 }
