@@ -12,7 +12,7 @@ export default createGlobalStyle`
     display: flex;
     justify-content: center;
     
-    min-height: 100vh;
+    min-height: 100dvh;
     min-width: 100px;
     padding:50px;
     
