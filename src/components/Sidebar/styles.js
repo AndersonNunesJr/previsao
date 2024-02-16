@@ -55,8 +55,7 @@ export const Container = styled.div`
   }
   .condition-rain {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
   }
   .condition-rain div {
     display: flex;

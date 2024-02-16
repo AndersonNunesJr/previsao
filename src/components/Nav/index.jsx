@@ -16,12 +16,19 @@ export function Nav({ onSearch }) {
       onSearch(cityInput);
     }
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSearchClick();
+    }
+  };
   return (
     <Container>
       <Input
         placeholder="Digite nome da cidade..."
         type="text"
         onChange={handleInputChange}
+        onKeyPress={handleKeyDown}
       />
       <Button icon={CiSearch} onClick={handleSearchClick} />
     </Container>
