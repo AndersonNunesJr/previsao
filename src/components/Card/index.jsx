@@ -1,6 +1,4 @@
 import { Container } from "./styles";
-// import { Date } from "../index";
-// import icon from "../../assets/icons/clear-day.png";
 
 export function Card({ title, data, ...rest }) {
   return (

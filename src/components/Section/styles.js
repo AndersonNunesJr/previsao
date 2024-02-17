@@ -11,7 +11,7 @@ export const Container = styled.div`
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 0;
+    justify-content: space-between;
+    padding: 10px 0 0;
   }
 `;

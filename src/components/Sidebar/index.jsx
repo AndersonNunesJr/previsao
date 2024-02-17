@@ -22,17 +22,12 @@ import {
   img50d,
   img50n
 } from "../../assets/icons";
-// Use img01d e img01n conforme necessário
 
 import { WiWindy } from "react-icons/wi";
-import {
-  LiaTemperatureHighSolid,
-  LiaTemperatureLowSolid
-} from "react-icons/lia";
 
 import { Nav } from "../Nav";
 
-export function SideBar({ data, onSearch }) {
+export function SideBar({ data, onSearch, metrics }) {
   const [search, setSearch] = useState("");
 
   const handleSearch = (value) => {
@@ -43,7 +38,10 @@ export function SideBar({ data, onSearch }) {
   const iconCode = data.weather[0].icon;
   const iconPath = `img${iconCode}`;
 
-  console.log("icon", iconPath);
+  const UNIDADES_METRICAS = {
+    C: "m/s",
+    F: "mph"
+  };
 
   return (
     <Container>
@@ -55,7 +53,7 @@ export function SideBar({ data, onSearch }) {
         </div>
         <div className="temperature">
           <h1 id="temp">{data.main.temp}</h1>
-          <span className="temp-unit">&deg;C</span>
+          <span className="temp-unit">&deg;{metrics}</span>
         </div>
         <div className="details-container">
           <p className="date-time">segunda , 12:00</p>
@@ -71,17 +69,12 @@ export function SideBar({ data, onSearch }) {
               <TbDroplets />
               <p className="rain">{data.main.humidity}%</p>
             </div>
-            <div className="max-min">
-              <LiaTemperatureHighSolid />
-              <p className="max">{data.main.temp_max}&deg;C</p>
-            </div>
-            <div className="min-temp">
-              <LiaTemperatureLowSolid />
-              <p className="min">{data.main.temp_min}&deg;C</p>
-            </div>
             <div className="vel-wind">
               <FaWind />
-              <p className="wind">{data.wind.speed}km/h</p>
+              <p className="wind">
+                {data.wind.speed}
+                {UNIDADES_METRICAS[metrics]}
+              </p>
             </div>
             <div className="pressure">
               <WiWindy />
