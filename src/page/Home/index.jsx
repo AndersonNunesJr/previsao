@@ -5,7 +5,7 @@ import {
   KEY_OPENWEATHERMAP,
   KEY_OPENMETEO
 } from "../../services/api";
-// import icon from "../../assets/icons/clear-day.png";
+import { fusoHorarioAjuste, converterTimestamp } from "../../services/timeStap";
 import { Container } from "./styles";
 
 import {
@@ -16,12 +16,10 @@ import {
   Button,
   HighlightSection
 } from "../../components";
-// https://api.open-meteo.com/v1/forecast?latitude=-21.7642&longitude=-43.3503&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,pressure_msl,wind_speed_10m&daily=temperature_2m_max,sunrise,sunset&timezone=auto&past_hours=6&past_minutely_15=6&forecast_hours=6&forecast_minutely_15=24
-// const KEY = "49f33e38045b62622c52ce2e261259ca";
 
 export function Home() {
   const [weather, setWeather] = useState({
-    city: "",
+    city: "juiz de fora",
     name: "",
     dt_txt: "",
     dt: "",
@@ -84,7 +82,11 @@ export function Home() {
   const [activeApi, setActiveApi] = useState("Openweathermap");
   const [activeMetrics, setActiveMetrics] = useState("C");
 
-  // const icon = fetch(`https://openweathermap.org/img/wn/10d@2x.png`).then
+  const timeStapResult = fusoHorarioAjuste(weather.dt, weather.timezone);
+
+  const sunrise = fusoHorarioAjuste(weather.sys.sunrise, weather.timezone);
+
+  const sunset = fusoHorarioAjuste(weather.sys.sunset, weather.timezone);
 
   const handleSearch = (event) => {
     const city = event;
@@ -139,6 +141,7 @@ export function Home() {
         data={weather}
         onSearch={handleSearch}
         metrics={`${activeMetrics}`}
+        time={timeStapResult}
       />
 
       <Section>
@@ -169,13 +172,13 @@ export function Home() {
           </div>
         </Header>
         <Header className="hearder1">
-          <Card title="segunda" />
-          <Card title="segunda" />
-          <Card title="segunda" />
-          <Card title="segunda" />
-          <Card title="segunda" />
-          <Card title="segunda" />
-          <Card title="segunda" />
+          <Card title="segunda" data={weather} />
+          <Card title="segunda" data={weather} />
+          <Card title="segunda" data={weather} />
+          <Card title="segunda" data={weather} />
+          <Card title="segunda" data={weather} />
+          <Card title="segunda" data={weather} />
+          <Card title="segunda" data={weather} />
         </Header>
         <Section className="highlightSection">
           <Header>
@@ -192,9 +195,9 @@ export function Home() {
             metrics={`°${activeMetrics}`}
           />
           <HighlightSection
-            title="Sunrise"
-            data={weather.sys.sunrise}
-            metrics={`°${activeMetrics}`}
+            title="Nascer do sol"
+            time={sunrise}
+            metrics={sunrise.periodo}
           />
           <HighlightSection
             title="Temperatura máxima"
@@ -207,81 +210,12 @@ export function Home() {
             metrics={`°${activeMetrics}`}
           />
           <HighlightSection
-            title="Sunset"
-            data={weather.sys.sunset}
-            metrics={`°${activeMetrics}`}
+            title="Pôr do sol"
+            time={sunset}
+            metrics={sunset.periodo}
           />
         </Section>
       </Section>
     </Container>
   );
 }
-
-// <div className="max-min">
-// <LiaTemperatureHighSolid />
-// <p className="max">{data.main.temp_max}&deg;C</p>
-// </div>
-// <div className="min-temp">
-// <LiaTemperatureLowSolid />
-// <p className="min">{data.main.temp_min}&deg;C</p>
-// </div>
-
-// const handleSearch = (event) => {
-//   const city = event;
-
-//   if (!city) {
-//     alert("Digite um nome de cidade!");
-//     return;
-//   }
-
-//   const apiweather = fetch(
-//     `${API_OPENWEATHERMAP}/weather?q=${city}&units=metric&appid=${KEY}`
-//   );
-
-//   const apiforecast = fetch(
-//     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${KEY}`
-//   );
-
-//   //   .then((response) => {
-//   //     if (!response.ok) {
-//   //       throw new Error();
-//   //     }
-//   //     return response.json();
-//   //   })
-//   //   .then((data) => {
-//   //     const cityWeather = {
-//   //       city: data.city.name,
-//   //       list: data.list.map((item) => ({
-//   //         dt_txt: item.dt_txt,
-//   //         dt: item.dt,
-//   //         temp: item.main.temp,
-//   //         humidity: item.main.humidity,
-//   //         temp_max: item.main.temp_max,
-//   //         temp_min: item.main.temp_min,
-//   //         pressure: item.main.pressure,
-//   //         weather_icons: item.weather.map((weatherItem) => weatherItem.icon),
-//   //         wind: {
-//   //           speed: item.wind.speed
-//   //         }
-//   //       }))
-//   //     };
-//   //   })
-//   //   .catch((error) => {
-//   //     alert("Erro na busca da previsão do tempo!");
-//   //   });
-
-//   Promise.all([apiweather, apiforecast])
-//     .then(async (response) => {
-//       const weatherResponse = await response[0].json();
-//       const forrecastResponse = await response[1].json();
-
-//       setWeather({ city: event, ...weatherResponse });
-//       setForecast({ city: event, ...forrecastResponse });
-//     })
-//     .catch((error) => {
-//       alert("Erro na busca da previsão do tempo!");
-//     });
-
-//   console.log(forecast);
-//   console.log(weather);
-// };
