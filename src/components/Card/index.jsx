@@ -41,7 +41,8 @@ export function Card({ title, data, ...rest }) {
     "50d": img50d,
     "50n": img50n
   };
-  const iconCode = data.weather[0].icon;
+
+  const iconCode = data.day_1.icon;
   const icon = iconMap[iconCode];
   return (
     <Container>
@@ -52,7 +53,7 @@ export function Card({ title, data, ...rest }) {
             <img src={icon} alt="" />
           </div>
           <div className="day-temp">
-            <h2 className="temp">{data.main.temp}</h2>
+            <h2 className="temp">{Math.round(data.main.temp)}</h2>
             <span className="temp-unit">&deg;C</span>
           </div>
         </div>

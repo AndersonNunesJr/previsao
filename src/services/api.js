@@ -16,6 +16,9 @@ const API_GEOLOCATION = axios.create({
   baseURL: "http://api.openweathermap.org/geo/1.0"
 });
 
+const GEOLOCATION_DEFAULT = axios.create({
+  baseURL: "https://geolocation-db.com/json/"
+});
 // /direct?q={city}&limit=1&appid={key}
 
 export {
@@ -23,5 +26,8 @@ export {
   API_OPENMETEO,
   KEY_OPENWEATHERMAP,
   KEY_OPENMETEO,
-  API_GEOLOCATION
+  API_GEOLOCATION,
+  GEOLOCATION_DEFAULT
 };
+
+// https://api.open-meteo.com/v1/forecast?latitude=-21.7642&longitude=-43.3503&current=temperature_2m,is_day,relative_humidity_2m,apparent_temperature,precipitation,pressure_msl,wind_speed_10m&daily=temperature_2m_max,weather_code,sunrise,sunset&timezone=auto&past_hours=6&past_minutely_15=6&forecast_hours=6&forecast_minutely_15=24&timeformat=unixtime

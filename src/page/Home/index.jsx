@@ -78,7 +78,16 @@ export function Home() {
     // }
   });
 
-  const [forecast, setForecast] = useState();
+  const [forecast, setForecast] = useState({
+    // list: list.map((item) => ({
+    //   dt_txt: item.dt_txt,
+    //   dt: item.dt,
+    //   temp: item.main.temp,
+    //   temp_min: item.main.temp_min,
+    //   weather_icons: item.weather.map((weatherItem) => weatherItem.icon)
+    // }))
+  });
+
   const [activeApi, setActiveApi] = useState("Openweathermap");
   const [activeMetrics, setActiveMetrics] = useState("C");
 
@@ -121,10 +130,23 @@ export function Home() {
       }
     };
 
-    console.log("Weather:", weather);
-    // console.log("Forecast:", forecast);
-
+    console.log(forecast);
     fetchDataOpenWeatherMap(city);
+    console.log(
+      converterTimestamp(
+        fusoHorarioAjuste(forecast.list[0].dt, weather.timezone)
+      ).nomeDoDia
+    );
+  };
+
+  const a = {
+    day_1: {
+      title: converterTimestamp(
+        fusoHorarioAjuste(forecast.list[0].dt, weather.timezone)
+      ).nomeDoDia,
+      temp: forecast.list[0].main.temp,
+      img: forecast.list[0].weather.icon
+    }
   };
 
   const handleButtonClickApi = (buttonTitle) => {
@@ -172,7 +194,7 @@ export function Home() {
           </div>
         </Header>
         <Header className="hearder1">
-          <Card title="segunda" data={weather} />
+          <Card title={a[0].title} data={a} />
           <Card title="segunda" data={weather} />
           <Card title="segunda" data={weather} />
           <Card title="segunda" data={weather} />
@@ -190,8 +212,8 @@ export function Home() {
             metrics={`°${activeMetrics}`}
           />
           <HighlightSection
-            title="Uv index"
-            data={weather.main.temp_min}
+            title="Precipitação"
+            data={weather.pop}
             metrics={`°${activeMetrics}`}
           />
           <HighlightSection
@@ -219,3 +241,5 @@ export function Home() {
     </Container>
   );
 }
+
+// https://api.open-meteo.com/v1/forecast?latitude=-21.7642&longitude=-43.3503&current=temperature_2m,is_day,relative_humidity_2m,apparent_temperature,precipitation,pressure_msl,wind_speed_10m&daily=temperature_2m_max,weather_code,sunrise,sunset,temperature_2m_min,uv_index_max&timezone=auto&past_hours=6&past_minutely_15=6&forecast_hours=6&forecast_minutely_15=24&timeformat=unixtime

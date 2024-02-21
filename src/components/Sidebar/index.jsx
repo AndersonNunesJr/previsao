@@ -74,7 +74,7 @@ export function SideBar({ data, onSearch, metrics, time }) {
           <img src={icon} alt="" id="icon" />
         </div>
         <div className="temperature">
-          <h1 id="temp">{data.main.temp}</h1>
+          <h1 id="temp">{Math.round(data.main.temp * 10) / 10}</h1>
           <span className="temp-unit">&deg;{metrics}</span>
         </div>
         <div className="details-container">
