@@ -1,11 +1,11 @@
 function converterTimestamp(timestamp) {
   const timestampInMillis = parseInt(timestamp) * 1000;
-
+  const adicionarZero = (valor) => (valor < 10 ? `0${valor}` : valor);
   const date = new Date(timestampInMillis);
 
   const dias = date.getUTCDate();
-  const horas = date.getUTCHours();
-  const minutos = date.getUTCMinutes();
+  const horas = adicionarZero(date.getUTCHours());
+  const minutos = adicionarZero(date.getUTCMinutes());
   const diaDaSemana = date.getUTCDay();
   const periodo = date.getHours() >= 12 ? "PM" : "AM";
   const nomesDosDias = [
@@ -17,6 +17,7 @@ function converterTimestamp(timestamp) {
     "Sexta-feira",
     "Sábado"
   ];
+
   const nomeDoDia = nomesDosDias[diaDaSemana];
 
   return { dias, horas, minutos, nomeDoDia, periodo };

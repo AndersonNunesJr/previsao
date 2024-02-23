@@ -1,11 +1,11 @@
 import { Container } from "./styles";
 import { converterTimestamp } from "../../services/timeStap";
-export function HighlightSection({ title, data, metrics, time, ...rest }) {
+export function HighlightSection({ title, data, metrics, time }) {
   const horarioLocal = converterTimestamp(time);
   const isHorarioValid = !isNaN(horarioLocal.horas, horarioLocal.minutos);
 
   return (
-    <Container {...rest}>
+    <Container>
       <div className="highlights">
         <div className="cards">
           <div className="card2">
@@ -18,7 +18,7 @@ export function HighlightSection({ title, data, metrics, time, ...rest }) {
               ) : (
                 <p>{data}</p>
               )}
-              <p>{metrics}</p>
+              {metrics ? <p>{metrics}</p> : <p>{horarioLocal.periodo}</p>}
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ export const Container = styled.div`
     text-align: center;
 
     color: #1a1a1a;
-    background-color: #fff;
+    background-color: #a9cafc;
   }
 
   .card h2 {
