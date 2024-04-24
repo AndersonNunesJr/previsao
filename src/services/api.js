@@ -35,5 +35,3 @@ export {
   geoApiOptions,
   GEOLOCATION_DEFAULT
 };
-
-// https://api.open-meteo.com/v1/forecast?latitude=-21.7642&longitude=-43.3503
