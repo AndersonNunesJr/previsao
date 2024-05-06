@@ -73,30 +73,30 @@ export function OpenMeteo() {
 
   const sunset = fusoHorarioAjuste(weather.sys[0].sunset[0], weather.timezone);
 
-  async function obterDadosGeolocalizacao() {
-    try {
-      const resposta = await GEOLOCATION_DEFAULT.get();
-      return resposta.data;
-    } catch (erro) {
-      console.error("Erro na chamada de geolocalização:", erro);
-      throw erro;
-    }
-  }
+  // async function obterDadosGeolocalizacao() {
+  //   try {
+  //     const resposta = await GEOLOCATION_DEFAULT.get();
+  //     return resposta.data;
+  //   } catch (erro) {
+  //     console.error("Erro na chamada de geolocalização:", erro);
+  //     throw erro;
+  //   }
+  // }
 
-  function dadosGeolocalizacaoArmazenados() {
-    return localStorage.getItem("dadosGeolocalizacao") !== null;
-  }
+  // function dadosGeolocalizacaoArmazenados() {
+  //   return localStorage.getItem("dadosGeolocalizacao") !== null;
+  // }
 
-  async function primeiraChamadaSeNecessario() {
-    if (!dadosGeolocalizacaoArmazenados()) {
-      const dadosGeolocalizacao = await obterDadosGeolocalizacao();
-      localStorage.setItem(
-        "dadosGeolocalizacao",
-        JSON.stringify(dadosGeolocalizacao)
-      );
-      handleSearch(dadosGeolocalizacao.city);
-    }
-  }
+  // async function primeiraChamadaSeNecessario() {
+  //   if (!dadosGeolocalizacaoArmazenados()) {
+  //     const dadosGeolocalizacao = await obterDadosGeolocalizacao();
+  //     localStorage.setItem(
+  //       "dadosGeolocalizacao",
+  //       JSON.stringify(dadosGeolocalizacao)
+  //     );
+  //     handleSearch(dadosGeolocalizacao.city);
+  //   }
+  // }
 
   const handleSearch = (event) => {
     const city = event;
