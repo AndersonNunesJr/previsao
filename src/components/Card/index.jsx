@@ -108,6 +108,7 @@ export function Card({ title, data, iconName, temp, metrics }) {
       : data.weather[0].is_day === 0
         ? "n"
         : "d";
+
   const icon = iconMap[`${iconCode}${period}`]
     ? iconMap[`${iconCode}${period}`]
     : iconMap[iconCode];

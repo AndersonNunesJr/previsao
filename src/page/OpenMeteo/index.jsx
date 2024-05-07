@@ -105,7 +105,7 @@ export function OpenMeteo() {
       F: "&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch"
     };
 
-    localStorage.setItem("cidadeSelecionada", city);
+    // localStorage.setItem("cidadeSelecionada", city);
 
     if (!city) {
       alert("Digite um nome de cidade!");

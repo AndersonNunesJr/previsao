@@ -20,12 +20,13 @@ function converterTimestamp(timestamp) {
 
   const nomeDoDia = nomesDosDias[diaDaSemana];
 
+  console.log(nomeDoDia, "", horas, ":", minutos);
   return { dias, horas, minutos, nomeDoDia, periodo };
 }
 
 function fusoHorarioAjuste(time, fuso) {
   const horarioLocal = time + fuso;
+  console.log(horarioLocal);
   return horarioLocal;
 }
-
 export { converterTimestamp, fusoHorarioAjuste };

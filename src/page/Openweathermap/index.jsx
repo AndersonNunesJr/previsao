@@ -220,7 +220,7 @@ export function Openweathermap() {
   };
   const UNIDADE = "mm";
   useEffect(() => {
-    handleSearch(localStorage.getItem("cidadeSelecionada"));
+    // handleSearch(localStorage.getItem("cidadeSelecionada"));
   });
   return (
     <Container>
